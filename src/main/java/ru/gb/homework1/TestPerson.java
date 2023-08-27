@@ -19,7 +19,7 @@ public class TestPerson {
 
 
 
-     log.info(person.toString());
+     log.info(person.toString());//
 
 
 
