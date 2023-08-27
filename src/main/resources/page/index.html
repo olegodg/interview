@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Students</title>
+</head>
+<body>
+<h1>Students</h1>
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+
+        <a th:href="@{/students/{id}(id=${student.id})}">View</a>
+        <a th:href="@{/students/{id}/edit(id=${student.id})}">Update</a>
+        <a th:href="@{/students/{id}/delete(id=${student.id})}">Delete</a>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/students}" th:object="${student}" method="post">
+    <label>
+        <input type="text" th:field="*{name}" placeholder="Name">
+    </label>
+    <label>
+        <input type="text" th:field="*{age}" placeholder="Age">
+    </label>
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>
+
